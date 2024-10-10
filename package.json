@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/ICF-M78/mark-map.git"
   },
+  "icon": "images/map.png",
   "engines": {
     "vscode": "^1.94.0"
   },

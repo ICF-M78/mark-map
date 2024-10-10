@@ -72,12 +72,16 @@ class MarkMapProvider {
       const match1 = line.match(/^<template>/);
       const match2 = line.match(/^<script/);
       const match3 = line.match(/^<style/);
+      // 匹配 // TODO // TAG // DONE
+      const match4 = line.match(/\/\/\s*TODO\s*(.*)/);
+      const match5 = line.match(/\/\/\s*TAG\s*(.*)/);
+      const match6 = line.match(/\/\/\s*DONE\s*(.*)/);
       if (match) {
         markArr.push({
           label: `${match[1]}`,
           line: index,
           type: "mark",
-          icon: "circle-small",
+          icon: "circle",
         });
       }
       if (match1) {
@@ -104,6 +108,30 @@ class MarkMapProvider {
           icon: "circle",
         });
       }
+      if (match4) {
+        markArr.push({
+          label: `TODO ${match4[1]}`,
+          line: index,
+          type: "todo",
+          icon: "circle-large",
+        });
+      }
+      if (match5) {
+        markArr.push({
+          label: `TAG ${match5[1]}`,
+          line: index,
+          type: "tag",
+          icon: "issues",
+        });
+      }
+      if (match6) {
+        markArr.push({
+          label: `DONE ${match6[1]}`,
+          line: index,
+          type: "done",
+          icon: "pass",
+        });
+      }
     });
     return markArr;
   }
@@ -118,10 +146,31 @@ class MarkCommentItem extends vscode.TreeItem {
       title: "标记地图",
       arguments: [comment.line],
     };
-    this.iconPath = this.getIconPath(comment.icon);
+    this.iconPath = this.getIconPath(comment.icon, comment.type);
   }
-  getIconPath(icon) {
-    return new vscode.ThemeIcon(icon);
+
+  getIconPath(icon, type) {
+    let color;
+    switch (type) {
+      case "style":
+      case "script":
+      case "template":
+        color = new vscode.ThemeColor("charts.yellow");
+        break;
+      case "tag":
+        color = new vscode.ThemeColor("charts.blue");
+        break;
+      case "todo":
+        color = new vscode.ThemeColor("charts.red");
+        break;
+      case "done":
+        color = new vscode.ThemeColor("charts.green");
+        break;
+      default:
+        color = new vscode.ThemeColor("charts.purple");
+        break;
+    }
+    return new vscode.ThemeIcon(icon, color);
   }
 }
 
