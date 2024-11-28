@@ -2,7 +2,7 @@
   "name": "mark-map",
   "displayName": "Mark Map",
   "description": "mark注释大纲",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "wujingtao",
   "author": "wujingtao",
   "repository": {
@@ -27,7 +27,7 @@
         {
           "id": "markCommentsOutline",
           "name": "Mark地图（vue3）",
-          "icon": "images/map.png"
+          "icon": "images/address.png"
         }
       ]
     }
