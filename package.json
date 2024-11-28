@@ -2,8 +2,8 @@
   "name": "mark-map",
   "displayName": "Mark Map",
   "description": "mark注释大纲",
-  "version": "0.0.1",
-  "publisher": "ICF-M78",
+  "version": "0.0.3",
+  "publisher": "wujingtao",
   "author": "wujingtao",
   "repository": {
     "type": "git",
