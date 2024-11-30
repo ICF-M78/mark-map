@@ -2,7 +2,7 @@
   "name": "mark-map",
   "displayName": "Mark Map",
   "description": "mark注释大纲",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "publisher": "wujingtao",
   "author": "wujingtao",
   "repository": {
@@ -32,6 +32,9 @@
       ]
     }
   },
+  "files": [
+    "images"
+  ],
   "scripts": {
     "lint": "eslint .",
     "pretest": "pnpm run lint",
